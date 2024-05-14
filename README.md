@@ -1,16 +1,16 @@
-### SYNCHRONOUS-UP-COUNTER
+# SYNCHRONOUS-UP-COUNTER
 
-**AIM:**
+# AIM:
 
 To implement 4 bit synchronous up counter and validate functionality.
 
-**SOFTWARE REQUIRED:**
+# SOFTWARE REQUIRED:
 
 Quartus prime
 
-**THEORY**
+# THEORY:
 
-**4 bit synchronous UP Counter**
+## 4 bit synchronous UP Counter
 
 If we enable each J-K flip-flop to toggle based on whether or not all preceding flip-flop outputs (Q) are “high,” we can obtain the same counting sequence as the asynchronous circuit without the ripple effect, since each flip-flop in this circuit will be clocked at exactly the same time:
 
@@ -26,21 +26,51 @@ Since the first (LSB) flip-flop needs to toggle at every clock pulse, its J and 
 The next flip-flop need only “recognize” that the first flip-flop’s Q output is high to be made ready to toggle, so no AND gate is needed.
 However, the remaining flip-flops should be made ready to toggle only when all lower-order output bits are “high,” thus the need for AND gates.
 
-**Procedure**
+# Procedure:
 
-/* write all the steps invloved */
+1.Initialize the shift register to a known state (e.g., all zeros).
 
-**PROGRAM**
+2.Input a bit serially into the shift register.
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. 
+3.Shift the contents of the register one position to the right (or left).
 
-Developed by: RegisterNumber:
-*/
+4.Output the shifted bit from the last stage of the register.
 
-**RTL LOGIC UP COUNTER**
+5.Repeat steps 2-4 for each bit you want to input and shift.
 
-**TIMING DIAGRAM FOR IP COUNTER**
+# PROGRAM:
+```
+Program for flipflops and verify its truth table in quartus using Verilog programming. 
+Developed by: Moenish Baalan G
+Register Number: 212223220057
+```
+```
+module digi1(out,clk,rstn);
+input clk,rstn;
+output reg [3:0]out;
+always @ (posedge clk)
+begin
+   if(!rstn)
+     out<=0;
+   else 
+     out <= out+1;
+end
+endmodule
+```
 
-**TRUTH TABLE**
+# RTL LOGIC UP COUNTER:
+![328376530-69e8dfbc-d1dc-4b9e-a374-b7ec4e777688](https://github.com/MoenishBaalan/SYNCHRONOUS-UP-COUNTER/assets/147473396/110c346f-9e5c-4886-adda-2082823bb286)
 
-**RESULTS**
+
+
+# TIMING DIAGRAM FOR IP COUNTER:
+![328376622-cc510c76-2ade-4488-b5dd-75b77888e7c0](https://github.com/MoenishBaalan/SYNCHRONOUS-UP-COUNTER/assets/147473396/cd3e500f-2051-4e5f-bce2-409c96c351c4)
+
+
+# TRUTH TABLE:
+![328376661-85b8d713-dd5c-4a12-a24d-b8cf454f7c10](https://github.com/MoenishBaalan/SYNCHRONOUS-UP-COUNTER/assets/147473396/953b0484-c496-49cb-8da3-518080e5ae5d)
+
+
+
+# RESULTS:
+Hence a 4 bit synchronous up counter is implemented correctly
